@@ -40,7 +40,7 @@
 		$target_grad = $arr_gradients[array_rand( $arr_gradients , 1 )];
 	?>
 
-	<body class="<?php echo $target_grad; ?>">
+	<div class="<?php echo $target_grad; ?>">
 
 		
 		<style>
@@ -61,37 +61,16 @@
 
 			/* ############ */
 
-			#row_form
-			{
-				height: 10vh;
-			}
 
-			input
-			{
-				height: 45px;
-				border-radius: 20px;
-			}
-
-			#textinput_name
-			{
-				text-align: center;
-				width: 10%;
-			}
-
-			#textinput_msg
-			{
-				padding-inline-start: 30px;
-				width: 50%;
-			}
 
 			/* ############ */
 
-			#div_table
+			#row_tables div
 			{
 				padding: 16px;
 
 				height: 75vh;
-				overflow: auto; //Прокрутка
+				overflow: auto; /*Прокрутка*/
 			}
 
 			/* ############ */
@@ -102,80 +81,19 @@
 			}
 
 
+
+            .row
+            {
+                border: 1px solid  black; /* Временно*/
+                padding: 16px;
+                overflow: auto; /*Прокрутка*/
+            }
+
 			
 		</style>
 
 
 
-		<!-- Универсальная функция аякса -->
-		<script type="text/javascript" language="javascript">
-
-			function Exec_AJAX( path , form_data , div_id )
-			{
-				$.ajax({  type: 'POST',
-					url: path,
-					data: $( form_data ).serialize(),
-					success: function(data) { $( div_id ).html(data); },
-					error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }				});
-			}
-
-		</script>
-
-
-		<script type="text/javascript" language="javascript">
-
-			// Вызов аякса для обновления
-			function Refresh_Table()
-			{
-				Exec_AJAX( 'Echo_Table.php' , '' , '#div_table' );
-				//alert("обнова");
-			}
-
-			let timerId = setInterval( () => Refresh_Table(), 8000);
-
-
-
-
-
-			function Try_Send_Msg(  )
-			{
-				let username = $("#textinput_name").val();
-				let msg      = $("#textinput_msg" ).val();
-
-				//alert(username);
-				//alert(msg);
-
-				if( username.length > 32 )
-				{
-					alert("Имя слишком длинноое (не больше 16 симв). У вас: "+username.length);
-					return;
-				}
-
-				if( msg.length > 128 )
-				{
-					alert("Сообщение слишком длинноое (не больше 128 симв). У вас: "+msg.length);
-					return;
-				}
-
-				if( msg.length <= 4  )
-				{
-					alert("Сообщение слишком Короткое (не менее 4 симв). У вас: "+msg.length);
-					return;
-				}
-
-
-				// Вызов аякса для добавки
-				Exec_AJAX( 'Add_Msg.php' , '#form_get_tbl' , '#div_footer' );
-
-				// Вызов аякса для обновления = срабатывает НЕ ВСЕГДА!!! Иногда приходится ждать обновления по таймеру.
-				Exec_AJAX( 'Echo_Table.php' , '' , '#div_table' );
-
-				//Очищение строки сообщения
-				$("#textinput_msg" ).val("");
-
-			}
-
-		</script>
 
 
 
@@ -188,53 +106,109 @@
 			<div id="row_banner" class="row text-center ">
 				<div  class="col-12 m-auto ">
 
-					<span style="font-size: 24px; font-weight: bold;">Online-Chat</span>
+					<span style="font-size: 24px; font-weight: bold;">S&P Today</span>
 
 				</div>
 			</div>
 			<!-- /Баннер -->
+        </div>
+
+
+        <!-- Все виджеты -->
+        <div class="container-fluid  ">
+
+
+            <div class="row text-center">
+                <div  class="col-6 m-auto">
+
+                    <div class="text-center" > Курсы валют </div>
+                    <iframe frameborder="0" scrolling="auto" height="195" width="555" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslfxrates.forexprostools.com/index_exchange.php?params&inner-border-color=%23CBCBCB&border-color=%23cbcbcb&bg1=%23F6F6F6&bg2=%23ffffff&inner-text-color=%23000000&currency-name-color=%23000000&header-text-color=%23FFFFFF&force_lang=7" align="center">   </iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/exchange-rates-table -->
+
+                </div>
+
+                <div  class="col-6 m-auto">
+
+                    <div class="text-center" > Валютные процентные ставки </div>
+                    <iframe frameborder="0" scrolling="no" height=50 width="474" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslirates.forexprostools.com/index.php?rows=4&bg1=FFFFFF&bg2=F1F5F8&text_color=333333&enable_border=show&border_color=0452A1&header_bg=0452A1&header_text=FFFFFF&force_lang=7" align="center"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/interest-rates -->
+
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div  class="col-12 m-auto">
+
+                    <iframe src="https://ru.widgets.investing.com/top-cryptocurrencies?theme=darkTheme&roundedCorners=false" width="100%" height="470px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/top-cryptocurrencies -->
+
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div  class="col-6 m-auto">
+
+                    <iframe src="https://sslecal2.forexprostools.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=2,3&features=datepicker,timezone,timeselector,filters&countries=4,17,72,14,6,37,143,56,36,5,61,35&calType=week&timeZone=18&lang=7" width="100%" height="570px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/economic-calendar -->
+
+                </div>
+                <div  class="col-6 m-auto">
+
+                    <div>
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <div class="tradingview-widget-copyright"><a href="https://ru.tradingview.com/markets/currencies/economic-calendar/" rel="noopener" target="_blank"><span class="blue-text">Экономический календарь</span></a> от TradingView</div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                                {
+                                    "colorTheme": "dark",
+                                    "isTransparent": false,
+                                    "width": "100%",
+                                    "height": "1px",
+                                    "locale": "ru",
+                                    "importanceFilter": "-1,0,1"
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div>
+                    <!-- https://ru.tradingview.com/widget/economic-calendar/ -->
+
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+
+
+                    <iframe height="600" width="1300" src="https://ssltvc.forexprostools.com/?pair_ID=2186&height=600&width=1300&interval=week&plotStyle=candles&domain_ID=7&lang_ID=7&timezone_ID=17"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/technical-charts -->
+
+            </div>
+        </div>
+                    <!--  -->
+                    <!--  -->
+                    <!--  -->
+                    <!--  -->
+                    <!--  -->
+
+
+            <!-- /Таблицы -->
 
 
 
-			<!-- Форма -->
-			<div id="row_form" class="row text-center">
-				<div class="col-12 m-auto ">
-
-					<form method="POST" id="form_get_tbl" action="javascript:Try_Send_Msg();" >
-						<fieldset>
-
-							<input id="textinput_name" name="nickname" type="text"
-								   placeholder="Логин" size="20"
-								   value="<?php require_once( 'libs/SF_CLASS.php' ); echo SF::Get_Random_String_Readable( random_int(4,8)); ?>" >
-
-							<input id="textinput_msg" name="message" type="text"
-								   placeholder="Сообщение" size="80"
-								   value="" >
-
-							<!-- Кнопка -->
-							<input type="submit" value="Отправить"/>
-
-						</fieldset>
-					</form>
-				</div>
-			</div>
-			<!-- /Форма -->
 
 
 
-			<!-- Таблица -->
-			<div class="row  text-center">
-				<div id="div_table" class="col-12  m-auto ">
-
-					<?php include "Echo_Table.php"; ?>
-
-				</div>
-			</div>
-			<!-- /Таблица -->
 
 
 
-			<!-- Футер -->
+        <!-- Футер -->
+        <div class="container-fluid  ">
 			<div id="row_footer" class="row  text-center">
 				<div  class="col-12 m-auto ">
 
@@ -242,10 +216,8 @@
 
 				</div>
 			</div>
-			<!-- Футер -->
-
-
-		</div>
+        </div>
+        <!-- Футер -->
 
 
 
