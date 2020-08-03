@@ -36,7 +36,13 @@
 	
 
 	<?php
-		$arr_gradients = Array( "grad-35" , "grad-cyan-dark-green" , "grad-purple-deep-orange" , "grad-plum" , "grad-passion-fruit" , "grad-sublime-vivid" );
+		$arr_gradients = Array(
+		    "grad-hibiscus", "grad-purple-deep-orange", "grad-plum","grad-king-yna","grad-celestial",
+            "grad-dawn", "grad-man-of-steel", "grad-09","grad-11","grad-20",
+            "grad-27", "grad-28", "grad-32","grad-39","grad-purple-pizzazz",
+            "grad-electric-violet", "grad-portage", "grad-blue-indigo","grad-ibiza-sunset","grad-cosmic-fusion",
+            "grad-grapefruit-sunset", "grad-virgin-america", "grad-dracula"
+		  );
 		$target_grad = $arr_gradients[array_rand( $arr_gradients , 1 )];
 	?>
 
@@ -44,12 +50,31 @@
 
         <style>
 
-            .grad-35 				 { background-image: linear-gradient(45deg, #2A9EFF, #FF4968); }
-            .grad-cyan-dark-green 	 { background-image: linear-gradient(45deg, #0097a7, #b2ff59); }
+            .grad-hibiscus 			{ background-image: linear-gradient(to right bottom, #f05f57, #c83d5c, #99245a, #671351, #360940); }
             .grad-purple-deep-orange { background-image: linear-gradient(45deg, #8e24aa, #ff6e40); }
             .grad-plum 				 { background-image: linear-gradient(45deg, #e35c67, #381ce2); }
-            .grad-passion-fruit		 { background-image: linear-gradient(45deg, #8137F7, #F6AB3E); }
-            .grad-sublime-vivid 	 { background-image: linear-gradient(45deg, #FC466B, #3F5EFB); }
+            .grad-king-yna 			 { background-image: linear-gradient(45deg, #1a2a6c, #b21f1f); }
+            .grad-celestial 			 { background-image: linear-gradient(45deg, #C33764, #1D2671); }
+            .grad-dawn 				 { background-image: linear-gradient(45deg, #F3904F, #3B4371); }
+            .grad-man-of-steel 		 { background-image: linear-gradient(45deg, #780206, #061161); }
+
+            .grad-09 { background-image: linear-gradient(45deg, #7c3fba, #bd55e8); }
+            .grad-11 { background-image: linear-gradient(45deg, #065bce, #64ff56, #eab58d, #d04bc6);}
+            .grad-20 { background-image: linear-gradient(45deg, #00796a, #6eff7a, #388aff); }
+            .grad-27 { background-image: linear-gradient(45deg, #ee1d81, #6e6bce); }
+            .grad-28 { background-image: linear-gradient(45deg, #c5003e, #560f50); }
+            .grad-32 { background-image: linear-gradient(45deg, #ff00fc, #4b00ff); }
+            .grad-39 { background-image: linear-gradient(45deg, #e7166b, #821ced); }
+
+            .grad-purple-pizzazz 	{ background-image: linear-gradient(to right bottom, #662d86, #8b2a8a, #ae2389, #cf1d83, #ed1e79); }
+            .grad-electric-violet 	{ background-image: linear-gradient(to left top, #4a00e0, #600de0, #7119e1, #8023e1, #8e2de2); }
+            .grad-portage 			{ background-image: linear-gradient(to left top, #97abff, #798ce5, #5b6ecb, #3b51b1, #123597); }
+            .grad-blue-indigo 		 { background-image: linear-gradient(45deg, #2962ff, #3949ab); }
+            .grad-ibiza-sunset		 { background-image: linear-gradient(45deg, #ee0979, #ff6a00); }
+            .grad-cosmic-fusion 	 	{ background-image: linear-gradient(45deg, #ff00cc, #333399); }
+            .grad-grapefruit-sunset  { background-image: linear-gradient(45deg, #e96443, #904e95); }
+            .grad-virgin-america 	 { background-image: linear-gradient(45deg, #7b4397, #dc2430); }
+            .grad-dracula 			 { background-image: linear-gradient(45deg, #DC2424, #4A569D); }
 
             /* ############ */
 
@@ -58,44 +83,23 @@
                 height: 10vh;
             }
 
-            /* ############ */
-
-
-
-            /* ############ */
-
-            #row_tables div
-            {
-                padding: 16px;
-
-                height: 75vh;
-                overflow: auto; /*Прокрутка*/
-            }
-
-            /* ############ */
-
             #row_footer
             {
                 height: 5vh;
             }
 
-
+            /* ############ */
 
             .row
             {
-                border: 1px solid orangered; /* Временно*/
+                /*border: 1px solid orangered; /* Временно*/
                 padding: 10px;
                 /*overflow: auto; /*Прокрутка*/
             }
             .row > div
             {
-                border: 1px solid black; /* Временно*/
-
+                /*border: 1px solid black; /* Временно*/
             }
-
-
-
-
 
         </style>
 
@@ -105,7 +109,7 @@
             <div id="row_banner" class="row text-center ">
                 <div  class="col-12 m-auto ">
 
-                    <span style="font-size: 24px; font-weight: bold;">S&P Today</span>
+                    <span style="font-size: 28px; font-weight: bold;">Finance Today</span>
 
                 </div>
             </div>
@@ -124,7 +128,6 @@
                 <!-- https://ru.tradingview.com/widget/symbol-info/ -->
 
             </div>
-
 
             <!-- Кросс-курсы валют, 2шт -->
             <div class="row text-center">
@@ -307,7 +310,7 @@
             <div id="row_footer" class="row  text-center">
                 <div  class="col-12 m-auto ">
 
-                    <span style="font-size: 14px; font-weight: bold;">https://github.com/Azerlund6214/Online-Chat</span>
+                    <span style="font-size: 14px; font-weight: bold;">https://github.com/Azerlund6214/Site-Finance-Today</span>
 
                 </div>
             </div>
@@ -315,11 +318,7 @@
         <!-- Футер -->
 
 
-
-                    <!--  -->
-                    <!--  -->
-                    <!--  -->
-
+        <!--  -->
 
         <!--
          На потом
@@ -345,22 +344,6 @@
 
 
          -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	
 	</body>
