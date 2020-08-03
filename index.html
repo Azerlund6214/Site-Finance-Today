@@ -85,14 +85,17 @@
             .row
             {
                 border: 1px solid orangered; /* Временно*/
-                padding: 16px;
-                overflow: auto; /*Прокрутка*/
+                padding: 10px;
+                /*overflow: auto; /*Прокрутка*/
             }
             .row > div
             {
                 border: 1px solid black; /* Временно*/
 
             }
+
+
+
 
 
 		</style>
@@ -122,116 +125,211 @@
         <!-- Все виджеты -->
         <div class="container-fluid  ">
 
-            <!-- Курсы валют и ставки ЦБ -->
-            <div class="row text-center">
-                <div  class="col-6 m-auto">
 
-                    <div class="text-center" > Курсы валют </div>
-                    <iframe frameborder="0" scrolling="auto" height="195" width="555" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslfxrates.forexprostools.com/index_exchange.php?params&inner-border-color=%23CBCBCB&border-color=%23cbcbcb&bg1=%23F6F6F6&bg2=%23ffffff&inner-text-color=%23000000&currency-name-color=%23000000&header-text-color=%23FFFFFF&force_lang=7" align="center">   </iframe>
-                    <!-- https://ru.investing.com/webmaster-tools/exchange-rates-table -->
+            <!-- 10 Активов -->
 
-                </div>
 
-                <div  class="col-6 m-auto">
 
-                    <div class="text-center" > Валютные процентные ставки </div>
-                    <iframe frameborder="0" scrolling="no" height=50 width="474" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslirates.forexprostools.com/index.php?rows=4&bg1=FFFFFF&bg2=F1F5F8&text_color=333333&enable_border=show&border_color=0452A1&header_bg=0452A1&header_text=FFFFFF&force_lang=7" align="center"></iframe>
-                    <!-- https://ru.investing.com/webmaster-tools/interest-rates -->
 
-                </div>
-            </div>
 
-            <!-- 10 Криптовалют -->
-            <div class="row text-center">
-                <div  class="col-12 m-auto">
-
-                    <iframe src="https://ru.widgets.investing.com/top-cryptocurrencies?theme=darkTheme&roundedCorners=false" width="100%" height="470px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
-                    <!-- https://ru.investing.com/webmaster-tools/top-cryptocurrencies -->
-
-                </div>
-            </div>
-
-            <!-- Календари, 2шт -->
-            <div class="row text-center">
-
-                <div  class="col-6 m-auto">
-
-                    <iframe src="https://sslecal2.forexprostools.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=2,3&features=datepicker,timezone,timeselector,filters&countries=4,17,72,14,6,37,143,56,36,5,61,35&calType=week&timeZone=18&lang=7" width="100%" height="570px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
-                    <!-- https://ru.investing.com/webmaster-tools/economic-calendar -->
-
-                </div>
-                <div  class="col-6 m-auto">
+                <!-- , 2шт -->
+                <div class="row p-0 text-center">
+                    <div  class="col-6 m-auto">
 
                         <!-- TradingView Widget BEGIN -->
                         <div class="tradingview-widget-container m-auto">
                             <div class="tradingview-widget-container__widget"></div>
-                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
                                 {
-                                    "colorTheme": "dark",
-                                    "isTransparent": false,
+                                    "symbol": "NASDAQ:AAPL",
                                     "width": "100%",
-                                    "height": "1px",
                                     "locale": "ru",
-                                    "importanceFilter": "-1,0,1"
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
                                 }
                             </script>
                         </div>
                         <!-- TradingView Widget END -->
 
-                    <!-- https://ru.tradingview.com/widget/economic-calendar/ -->
+                    </div> <!-- NASDAQ:AAPL -->
+                    <div  class="col-6 m-auto">
 
-                </div>
-
-            </div>
-
-            <!-- Большой график 1 -->
-            <div class="row text-center">
-                <div  class="col-12 m-auto">
-
-                    <iframe height="600" width="100%" src="https://ssltvc.forexprostools.com/?pair_ID=525&height=600&width=1300&interval=week&plotStyle=candles&domain_ID=7&lang_ID=7&timezone_ID=17"></iframe>
-                    <!-- https://ru.investing.com/webmaster-tools/technical-charts -->
-
-                </div>
-            </div>
-
-            <!-- Большой график 2 -->
-            <div class="row text-center">
-                <div  class="col-12 m-auto">
-
-                    <!-- TradingView Widget BEGIN -->
-                    <div class="tradingview-widget-container">
-                        <div id="tradingview_6a5a2"></div>
-                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                        <script type="text/javascript">
-                            new TradingView.widget(
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
                                 {
+                                    "symbol": "NASDAQ:MSFT",
                                     "width": "100%",
-                                    "height": "600px",
-                                    "symbol": "NASDAQ:AAPL",
-                                    "interval": "180",
-                                    "timezone": "Europe/Moscow",
-                                    "theme": "dark",
-                                    "style": "3",
                                     "locale": "ru",
-                                    "toolbar_bg": "#f1f3f6",
-                                    "enable_publishing": false,
-                                    "allow_symbol_change": true,
-                                    "show_popup_button": true,
-                                    "popup_width": "1000",
-                                    "popup_height": "650",
-                                    "container_id": "tradingview_6a5a2"
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
                                 }
-                            );
-                        </script>
-                    </div>
-                    <!-- TradingView Widget END -->
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
 
-                    <!-- https://ru.tradingview.com/widget/advanced-chart/ -->
+                    </div> <!-- NASDAQ:MSFT -->
+
+                    <div  class="col-6 m-auto">
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NASDAQ:GOOGL",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NASDAQ:GOOGL -->
+                    <div  class="col-6 m-auto">
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NYSE:ORCL",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NYSE:ORCL -->
+
+
+                    <div  class="col-6 m-auto">
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NASDAQ:TSLA",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NASDAQ:TSLA -->
+                    <div  class="col-6 m-auto"> <!--  -->
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NYSE:MCD",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NYSE:MCD -->
+
+                    <div  class="col-6 m-auto"> <!--  -->
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NYSE:BRK.B",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NYSE:BRK.B -->
+                    <div  class="col-6 m-auto"> <!--  -->
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NYSE:KO",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NYSE:KO -->
+
+
+                    <div  class="col-6 m-auto"> <!--  -->
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NYSE:V",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NYSE:V -->
+                    <div  class="col-6 m-auto"> <!--  -->
+
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container m-auto">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                                {
+                                    "symbol": "NYSE:MA",
+                                    "width": "100%",
+                                    "locale": "ru",
+                                    "colorTheme": "dark",
+                                    "isTransparent": false
+                                }
+                            </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+
+                    </div> <!-- NYSE:MA -->
+
+
+                    <!-- сбер яндекс  норникель   -->
 
                 </div>
-            </div>
 
 
+
+
+                <!-- https://ru.tradingview.com/widget/symbol-info/ -->
 
 
             <!-- Кросс-курсы валют, 2шт -->
@@ -298,7 +396,114 @@
 
             </div>
 
+            <!-- Большой график 1 -->
+            <div class="row text-center">
+                <div  class="col-12 m-auto">
 
+                    <iframe height="600" width="100%" src="https://ssltvc.forexprostools.com/?pair_ID=525&height=600&width=1300&interval=week&plotStyle=candles&domain_ID=7&lang_ID=7&timezone_ID=17"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/technical-charts -->
+
+                </div>
+            </div>
+
+            <!-- Большой график 2 -->
+            <div class="row text-center">
+                <div  class="col-12 m-auto">
+
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview_6a5a2"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                            new TradingView.widget(
+                                {
+                                    "width": "100%",
+                                    "height": "600px",
+                                    "symbol": "NASDAQ:AAPL",
+                                    "interval": "180",
+                                    "timezone": "Europe/Moscow",
+                                    "theme": "dark",
+                                    "style": "3",
+                                    "locale": "ru",
+                                    "toolbar_bg": "#f1f3f6",
+                                    "enable_publishing": false,
+                                    "allow_symbol_change": true,
+                                    "show_popup_button": true,
+                                    "popup_width": "1000",
+                                    "popup_height": "650",
+                                    "container_id": "tradingview_6a5a2"
+                                }
+                            );
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+
+                    <!-- https://ru.tradingview.com/widget/advanced-chart/ -->
+
+                </div>
+            </div>
+
+            <!-- Курсы валют и ставки ЦБ -->
+            <div class="row text-center">
+                <div  class="col-6 m-auto">
+
+                    <div class="text-center" > Курсы валют </div>
+                    <iframe frameborder="0" scrolling="auto" height="195" width="555" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslfxrates.forexprostools.com/index_exchange.php?params&inner-border-color=%23CBCBCB&border-color=%23cbcbcb&bg1=%23F6F6F6&bg2=%23ffffff&inner-text-color=%23000000&currency-name-color=%23000000&header-text-color=%23FFFFFF&force_lang=7" align="center">   </iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/exchange-rates-table -->
+
+                </div>
+
+                <div  class="col-6 m-auto">
+
+                    <div class="text-center" > Валютные процентные ставки </div>
+                    <iframe frameborder="0" scrolling="no" height=50 width="474" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslirates.forexprostools.com/index.php?rows=4&bg1=FFFFFF&bg2=F1F5F8&text_color=333333&enable_border=show&border_color=0452A1&header_bg=0452A1&header_text=FFFFFF&force_lang=7" align="center"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/interest-rates -->
+
+                </div>
+            </div>
+
+            <!-- 10 Криптовалют -->
+            <div class="row text-center">
+                <div  class="col-12 m-auto">
+
+                    <iframe src="https://ru.widgets.investing.com/top-cryptocurrencies?theme=darkTheme&roundedCorners=false" width="100%" height="470px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/top-cryptocurrencies -->
+
+                </div>
+            </div>
+
+            <!-- Календари, 2шт -->
+            <div class="row text-center">
+
+                <div  class="col-6 m-auto">
+
+                    <iframe src="https://sslecal2.forexprostools.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=2,3&features=datepicker,timezone,timeselector,filters&countries=4,17,72,14,6,37,143,56,36,5,61,35&calType=week&timeZone=18&lang=7" width="100%" height="570px" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/economic-calendar -->
+
+                </div>
+                <div  class="col-6 m-auto">
+
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container m-auto">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                            {
+                                "colorTheme": "dark",
+                                "isTransparent": false,
+                                "width": "100%",
+                                "height": "1px",
+                                "locale": "ru",
+                                "importanceFilter": "-1,0,1"
+                            }
+                        </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+
+                    <!-- https://ru.tradingview.com/widget/economic-calendar/ -->
+
+                </div>
+
+            </div>
 
 
 
@@ -316,8 +521,6 @@
                         https://ru.tradingview.com/widget/single-ticker/
                         лучше этот https://ru.tradingview.com/widget/mini-chart/
 
-                        https://ru.tradingview.com/widget/symbol-info/
-                        ширина 600
 
 
                         Крутое
@@ -331,6 +534,9 @@
 
                         Спорное
                         https://ru.tradingview.com/widget/market-movers/
+                        https://ru.tradingview.com/widget/market-quotes/
+                            https://ru.tradingview.com/widget/technical-analysis/
+
 
                      -->
 
@@ -362,8 +568,6 @@
 
             </div>
             <div  class="col-6 m-auto">
-
-
 
                 <!--  -->
 
