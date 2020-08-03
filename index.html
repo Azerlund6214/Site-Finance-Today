@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="ru">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Online-Chat</title>
+		
+		<!-- *** BOOTSTRAP CDN *** -->
+		<!-- Оптимизация = Предвыбор DNS + Предподключение к облаку -->
+		<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin>
+		
+		
+		<!-- Для просмотра с моб устройств -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Главный CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+		
+		<!-- Notice: jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/popper.min.js"></script>
+		<script src = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<!-- *** BOOTSTRAP CDN *** -->
+
+		<!-- ======================================== -->
+
+
+		<link href="table_style.css" rel="stylesheet" type="text/css">
+
+
+    </head>
+	
+
+	<?php
+		$arr_gradients = Array( "grad-35" , "grad-cyan-dark-green" , "grad-purple-deep-orange" , "grad-plum" , "grad-passion-fruit" , "grad-sublime-vivid" );
+		$target_grad = $arr_gradients[array_rand( $arr_gradients , 1 )];
+	?>
+
+	<body class="<?php echo $target_grad; ?>">
+
+		
+		<style>
+
+			.grad-35 				 { background-image: linear-gradient(45deg, #2A9EFF, #FF4968); }
+			.grad-cyan-dark-green 	 { background-image: linear-gradient(45deg, #0097a7, #b2ff59); }
+			.grad-purple-deep-orange { background-image: linear-gradient(45deg, #8e24aa, #ff6e40); }
+			.grad-plum 				 { background-image: linear-gradient(45deg, #e35c67, #381ce2); }
+			.grad-passion-fruit		 { background-image: linear-gradient(45deg, #8137F7, #F6AB3E); }
+			.grad-sublime-vivid 	 { background-image: linear-gradient(45deg, #FC466B, #3F5EFB); }
+
+			/* ############ */
+
+			#row_banner
+			{
+				height: 10vh;
+			}
+
+			/* ############ */
+
+			#row_form
+			{
+				height: 10vh;
+			}
+
+			input
+			{
+				height: 45px;
+				border-radius: 20px;
+			}
+
+			#textinput_name
+			{
+				text-align: center;
+				width: 10%;
+			}
+
+			#textinput_msg
+			{
+				padding-inline-start: 30px;
+				width: 50%;
+			}
+
+			/* ############ */
+
+			#div_table
+			{
+				padding: 16px;
+
+				height: 75vh;
+				overflow: auto; //Прокрутка
+			}
+
+			/* ############ */
+
+			#row_footer
+			{
+				height: 5vh;
+			}
+
+
+			
+		</style>
+
+
+
+		<!-- Универсальная функция аякса -->
+		<script type="text/javascript" language="javascript">
+
+			function Exec_AJAX( path , form_data , div_id )
+			{
+				$.ajax({  type: 'POST',
+					url: path,
+					data: $( form_data ).serialize(),
+					success: function(data) { $( div_id ).html(data); },
+					error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }				});
+			}
+
+		</script>
+
+
+		<script type="text/javascript" language="javascript">
+
+			// Вызов аякса для обновления
+			function Refresh_Table()
+			{
+				Exec_AJAX( 'Echo_Table.php' , '' , '#div_table' );
+				//alert("обнова");
+			}
+
+			let timerId = setInterval( () => Refresh_Table(), 8000);
+
+
+
+
+
+			function Try_Send_Msg(  )
+			{
+				let username = $("#textinput_name").val();
+				let msg      = $("#textinput_msg" ).val();
+
+				//alert(username);
+				//alert(msg);
+
+				if( username.length > 32 )
+				{
+					alert("Имя слишком длинноое (не больше 16 симв). У вас: "+username.length);
+					return;
+				}
+
+				if( msg.length > 128 )
+				{
+					alert("Сообщение слишком длинноое (не больше 128 симв). У вас: "+msg.length);
+					return;
+				}
+
+				if( msg.length <= 4  )
+				{
+					alert("Сообщение слишком Короткое (не менее 4 симв). У вас: "+msg.length);
+					return;
+				}
+
+
+				// Вызов аякса для добавки
+				Exec_AJAX( 'Add_Msg.php' , '#form_get_tbl' , '#div_footer' );
+
+				// Вызов аякса для обновления = срабатывает НЕ ВСЕГДА!!! Иногда приходится ждать обновления по таймеру.
+				Exec_AJAX( 'Echo_Table.php' , '' , '#div_table' );
+
+				//Очищение строки сообщения
+				$("#textinput_msg" ).val("");
+
+			}
+
+		</script>
+
+
+
+
+
+		<div class="container-fluid  ">
+
+
+			<!-- Баннер -->
+			<div id="row_banner" class="row text-center ">
+				<div  class="col-12 m-auto ">
+
+					<span style="font-size: 24px; font-weight: bold;">Online-Chat</span>
+
+				</div>
+			</div>
+			<!-- /Баннер -->
+
+
+
+			<!-- Форма -->
+			<div id="row_form" class="row text-center">
+				<div class="col-12 m-auto ">
+
+					<form method="POST" id="form_get_tbl" action="javascript:Try_Send_Msg();" >
+						<fieldset>
+
+							<input id="textinput_name" name="nickname" type="text"
+								   placeholder="Логин" size="20"
+								   value="<?php require_once( 'libs/SF_CLASS.php' ); echo SF::Get_Random_String_Readable( random_int(4,8)); ?>" >
+
+							<input id="textinput_msg" name="message" type="text"
+								   placeholder="Сообщение" size="80"
+								   value="" >
+
+							<!-- Кнопка -->
+							<input type="submit" value="Отправить"/>
+
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<!-- /Форма -->
+
+
+
+			<!-- Таблица -->
+			<div class="row  text-center">
+				<div id="div_table" class="col-12  m-auto ">
+
+					<?php include "Echo_Table.php"; ?>
+
+				</div>
+			</div>
+			<!-- /Таблица -->
+
+
+
+			<!-- Футер -->
+			<div id="row_footer" class="row  text-center">
+				<div  class="col-12 m-auto ">
+
+					<span style="font-size: 14px; font-weight: bold;">https://github.com/Azerlund6214/Online-Chat</span>
+
+				</div>
+			</div>
+			<!-- Футер -->
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+	
+	</body>
+
+</html>
