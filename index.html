@@ -305,6 +305,48 @@
         </div>
         <!-- /Все виджеты -->
 
+
+
+        <!-- Все виджеты -->
+        <div class="container-fluid  ">
+
+            <div class="row text-center">
+                <div  class="col-12 m-auto">
+
+                    <form id="form_get_com_data" method="POST"
+                          action="javascript:void();"
+                          onsubmit='Exec_AJAX("Echo_company_data.php","#form_get_com_data","#row_company_data");' >
+                        <fieldset>
+
+                            <input id="" name="company_ticker" type="text"
+                                   size="80" value="NASDAQ:AAPL" >
+
+                            <!-- Кнопка -->
+                            <input type="submit" value="Отправить"/>
+
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+
+
+            <div id="row_company_data" class="row text-center">
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
         <!-- Футер -->
         <div class="container-fluid  ">
             <div id="row_footer" class="row  text-center">
@@ -328,9 +370,6 @@
 
 
 
-            Крутое
-            https://ru.tradingview.com/widget/symbol-profile/
-            https://ru.tradingview.com/widget/fundamental-data/
 
             хорошее
             https://ru.tradingview.com/widget/ticker/
@@ -344,7 +383,20 @@
 
 
          -->
+        <!-- Универсальная функция аякса -->
+        <script type="text/javascript" language="javascript">
 
+            function Exec_AJAX( path , form_data , div_id )
+            {
+                $.ajax({  type: 'POST',
+                    url: path,
+                    data: $( form_data ).serialize(),
+                    success: function(data) { $( div_id ).html(data); },
+                    error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }
+                });
+            }
+
+        </script>
 	
 	</body>
 
