@@ -83,6 +83,7 @@
                 height: 10vh;
             }
 
+
             #row_footer
             {
                 height: 5vh;
@@ -103,6 +104,24 @@
 
         </style>
 
+        <!-- Универсальная функция аякса -->
+        <script type="text/javascript" language="javascript">
+
+            function Exec_AJAX( path , form_data , div_id )
+            {
+                $.ajax({  type: 'POST',
+                    url: path,
+                    data: $( form_data ).serialize(),
+                    success: function(data) { $( div_id ).html(data); },
+                    error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }
+                });
+            }
+
+        </script>
+
+
+
+
 
         <!-- Баннер -->
         <div class="container-fluid  ">
@@ -120,14 +139,7 @@
         <!-- Все виджеты -->
         <div class="container-fluid  ">
 
-            <!-- Плитка активов (пхп) -->
-            <div class="row p-0 text-center">
 
-                <?php include "Echo_stocks.php"; ?>
-
-                <!-- https://ru.tradingview.com/widget/symbol-info/ -->
-
-            </div>
 
             <!-- Кросс-курсы валют, 2шт -->
             <div class="row text-center">
@@ -197,16 +209,6 @@
             <div class="row text-center">
                 <div  class="col-12 m-auto">
 
-                    <iframe height="600" width="100%" src="https://ssltvc.forexprostools.com/?pair_ID=525&height=600&width=1300&interval=week&plotStyle=candles&domain_ID=7&lang_ID=7&timezone_ID=17"></iframe>
-                    <!-- https://ru.investing.com/webmaster-tools/technical-charts -->
-
-                </div>
-            </div>
-
-            <!-- Большой график 2 -->
-            <div class="row text-center">
-                <div  class="col-12 m-auto">
-
                     <!-- TradingView Widget BEGIN -->
                     <div class="tradingview-widget-container">
                         <div id="tradingview_6a5a2"></div>
@@ -240,6 +242,18 @@
                 </div>
             </div>
 
+
+            <!-- Большой график 2 -->
+            <div class="row text-center">
+                <div  class="col-12 m-auto">
+
+                    <iframe height="600" width="100%" src="https://ssltvc.forexprostools.com/?pair_ID=525&height=600&width=1300&interval=week&plotStyle=candles&domain_ID=7&lang_ID=7&timezone_ID=17"></iframe>
+                    <!-- https://ru.investing.com/webmaster-tools/technical-charts -->
+
+                </div>
+            </div>
+
+
             <!-- Курсы валют и ставки ЦБ -->
             <div class="row text-center">
                 <div  class="col-6 m-auto">
@@ -267,6 +281,15 @@
                     <!-- https://ru.investing.com/webmaster-tools/top-cryptocurrencies -->
 
                 </div>
+            </div>
+
+            <!-- Плитка активов (пхп) -->
+            <div class="row p-0 text-center">
+
+                <?php include "Echo_stocks.php"; ?>
+
+                <!-- https://ru.tradingview.com/widget/symbol-info/ -->
+
             </div>
 
             <!-- Календари, 2шт -->
@@ -307,7 +330,7 @@
 
 
 
-        <!-- Все виджеты -->
+        <!-- Данные о компании -->
         <div class="container-fluid  ">
 
             <div class="row text-center">
@@ -326,24 +349,22 @@
 
                         </fieldset>
                     </form>
-
+                    <script>
+                        // Что бы не было пусто
+                        Exec_AJAX("Echo_company_data.php","#form_get_com_data","#row_company_data");
+                    </script>
                 </div>
             </div>
 
-
             <div id="row_company_data" class="row text-center">
 
-
             </div>
+
         </div>
 
 
 
-
-
-
-
-
+        
 
 
 
@@ -383,20 +404,7 @@
 
 
          -->
-        <!-- Универсальная функция аякса -->
-        <script type="text/javascript" language="javascript">
 
-            function Exec_AJAX( path , form_data , div_id )
-            {
-                $.ajax({  type: 'POST',
-                    url: path,
-                    data: $( form_data ).serialize(),
-                    success: function(data) { $( div_id ).html(data); },
-                    error:   function(xhr, str){ alert('Возникла ошибка: ' + xhr.responseCode); }
-                });
-            }
-
-        </script>
 	
 	</body>
 
